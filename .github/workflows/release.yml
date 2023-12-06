@@ -6,6 +6,7 @@ on:
       # - release/3.10  # Set a branch to deploy
       # - release/*  # Set a branch to deploy
       - main  # Set a branch to deploy
+      - fix-.*
     tags:
       - v3.*
 
@@ -22,10 +23,18 @@ jobs:
         cache: yarn
 
     - name: "Install dependencies"
-      run: yarn install --frozen-lockfile
+      shell: bash
+      run: |
+        echo $PWD
+        echo $GITHUB_WORKSPACE
+        cd /home/runner/work/website/website
+        yarn install --frozen-lockfile
 
     - name: Build public site
+      shell: bash
       run: |
+        echo $PWD
+        echo $GITHUB_WORKSPACE
         yarn build
 
     - name: Publish site to yunionio/yunionio.github.io
