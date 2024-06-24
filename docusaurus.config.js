@@ -86,6 +86,16 @@ const config = {
   ],
 
   plugins: [
+    /* baremetal documentation */
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'bareman',
+        path: 'product/bareman',
+        routeBasePath: 'product/bareman',
+        sidebarPath: './sidebarsBaremetal.js',
+      },
+    ],
     [
       '@docusaurus/plugin-google-gtag',
       {
@@ -129,11 +139,26 @@ const config = {
         items: [
           // { to: '/docs/getting-started', label: '快速开始', position: 'left' },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            type: 'dropdown',
             label: '文档',
+            position: 'left',
+            items: [
+              {
+                label: 'Cloudpods',
+                href: '/docs/introduction',
+              },
+              {
+                label: 'Cloudpods Baremetal',
+                href: '/product/bareman/introduction',
+              },
+            ]
           },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: '文档',
+          // },
           { to: '/blog', label: '博客', position: 'left' },
           { to: 'https://www.yunion.cn/subscription/index.html', label: '服务订阅', position: 'left' },
           { to: 'https://apifox.com/apidoc/shared-f917f6a6-db9f-4d6a-bbc3-ea58c945d7fd', label: 'API', position: 'left' },
